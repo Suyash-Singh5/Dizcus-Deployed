@@ -8,7 +8,6 @@ import "../Room.css";
 import AddParticipantPanel from "../Components/AddParticipantPanel";
 import AllParticipants from "../Components/AllParticipants";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import { name } from "ejs";
 
 // const Container = styled.div`
 //   padding: 20px;
@@ -472,6 +471,7 @@ const Room = (props) => {
             ref={userVideo}
             autoPlay
             playsInline
+            muted
           />
         </div>
         <ChatOutput

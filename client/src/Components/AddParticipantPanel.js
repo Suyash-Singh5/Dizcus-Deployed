@@ -2,7 +2,7 @@ import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import copyLogo from "../Images/copy.png";
 const AddParticipantPanel = (props) => {
-  let joinLink = `localhost:3000/${props.roomID}`;
+  let joinLink = `dizcus.herokuapp.com/${props.roomID}`;
   return (
     <div
       ref={props.AddParticipantRef}
@@ -28,9 +28,7 @@ const AddParticipantPanel = (props) => {
             float: "right",
             marginRight: "1vw",
           }}
-        >
-          X
-        </div>
+        ></div>
       </div>
 
       <div
