@@ -210,6 +210,19 @@
   display: none;
 }
 
+.features {
+  color: rgb(255, 236, 236);
+  font-size: 1.5vw;
+  padding: 1.4vw 0vw;
+  text-align: center;
+  font-family: sans-serif;
+  /* border-radius: 0.5vw; */
+}
+
+.createButton:hover {
+  background-color: rgb(167, 42, 20);
+}
+
 .main__message_container > input {
   height: 5vh;
   width: 17vw;

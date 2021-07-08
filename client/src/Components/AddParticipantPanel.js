@@ -2,7 +2,7 @@ import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import copyLogo from "../Images/copy.png";
 const AddParticipantPanel = (props) => {
-  let joinLink = `dizcus.herokuapp.com/${props.roomID}`;
+  let joinLink = `dizcus.herokuapp.com/${props.roomID}/video`;
   return (
     <div
       ref={props.AddParticipantRef}

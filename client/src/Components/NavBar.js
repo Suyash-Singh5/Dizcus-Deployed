@@ -32,25 +32,46 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                <Link
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(244,183,40,1)",
+                  }}
+                >
                   <div>Home</div>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
                   to="/about"
-                  style={{ textDecoration: "none", color: "white" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(244,183,40,1)",
+                  }}
                 >
                   <div>About</div>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                <Link
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(244,183,40,1)",
+                  }}
+                >
                   <div>Join Meeting</div>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                <Link
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(255,255,0,0.8)",
+                  }}
+                >
                   <div className="contact">Contact Us</div>
                 </Link>
               </li>

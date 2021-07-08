@@ -69,6 +69,7 @@ const Room = (props) => {
   let count = peersRef.current.length + 1;
   let username = "Anonymous User";
   const handle = useFullScreenHandle();
+
   useEffect(() => {
     socketRef.current = io.connect("/");
     navigator.mediaDevices

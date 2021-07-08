@@ -52,7 +52,10 @@ const ChatOutput = (props) => {
       ></div>
 
       {/* This div contains the input writing box along with send button */}
-      <div>
+      <div
+        ref={props.chatMessageRef}
+        style={{ bottom: "2vh", position: "absolute" }}
+      >
         <textarea
           rows="1"
           ref={inputRef}
@@ -63,7 +66,7 @@ const ChatOutput = (props) => {
           onKeyPress={handleKeypress}
           style={{
             height: "5vh",
-            width: "17vw",
+            width: "100%",
             paddingLeft: "1vw",
             paddingRight: "1.5vw",
             paddingTop: "1vh",
@@ -72,17 +75,19 @@ const ChatOutput = (props) => {
             backgroundColor: "#1f013ace",
             color: "white",
             outline: "none",
-            left: "0.5vw",
-            bottom: "2vh",
-            position: "absolute",
+            marginLeft: "0.5vw",
+
             resize: "none",
           }}
         />
         <button
           style={{
-            position: "absolute",
-            bottom: "3vh",
-            left: "15.5vw",
+            position: "relative",
+            // bottom: "3vh",
+            // left: "15.5vw",
+            float: "right",
+            // right: "1.5vw",
+            top: "-5vh",
             backgroundColor: "rgba(0,0,0,0)",
             border: "none",
             width: "1.5vw",

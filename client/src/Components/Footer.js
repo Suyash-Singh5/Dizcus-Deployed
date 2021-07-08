@@ -24,13 +24,16 @@ const Footer = (props) => {
         style={{ width: "3vw", paddingLeft: "0px" }}
       >
         <div ref={props.MaxScreenRef} onClick={props.FullScreenAction}>
-          <div style={{ paddingTop: "1.5vw" }} onClick={props.handleFullScreen}>
+          <div
+            style={{ paddingTop: "1.5vw", cursor: "pointer" }}
+            onClick={props.handleFullScreen}
+          >
             <img src={fullscreen} alt="FullScreen" width="100%" />
           </div>
         </div>
         <div ref={props.MinScreenRef} onClick={props.FullScreenAction}>
           <div
-            style={{ marginTop: "1.5vw" }}
+            style={{ marginTop: "1.5vw", cursor: "pointer" }}
             onClick={props.exitFullScreen}
             // style={{ display: "none" }}
           >

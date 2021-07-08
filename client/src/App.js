@@ -5,6 +5,7 @@ import Room from "./routes/Room";
 import NewRoom from "./routes/NewRoom";
 import PreRoom from "./routes/PreRoom";
 import About from "./routes/About";
+import ChatRoom from "./routes/ChatRoom";
 
 const App = () => {
   
@@ -14,8 +15,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={NewRoom} />
           <Route path="/about" component={About} />
-          <Route path="/:roomID" exact component={PreRoom} />
-          <Route path="/:roomID/join" exact component={Room} />
+          <Route path="/:roomID/video" exact component={PreRoom} />
+          <Route path="/:roomID/video/join" exact component={Room} />
+          <Route path="/:roomID/chat" exact component={ChatRoom} />
         </Switch>
       </Router>
     </div>

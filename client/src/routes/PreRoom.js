@@ -8,19 +8,19 @@ import { Link, useRouteMatch } from "react-router-dom";
 
 const VideoBox = styled.video`
   // height: 45vh;
-  width: 30vw;
+  width: 35vw;
   border: 1px solid blue;
   border-radius: 10px;
-  margin-left: 20vw;
+  margin-left: 15vw;
   margin-top: 20vh;
 `;
 
 const name = {
   position: "absolute",
-  fontSize: "2vw",
+  fontSize: "2.2vw",
   top: "25vh",
   left: "55vw",
-  width: "28vw",
+  width: "30vw",
   backgroundColor: "rgba(255,0,255,0.3)",
   color: "white",
   border: "2px solid purple",
@@ -31,30 +31,36 @@ const name = {
 
 const micstyle = {
   position: "absolute",
-  left: "60vw",
+  left: "63vw",
   marginTop: "40vh",
   color: "white",
-  border: "none",
+  // border: "none",
+  width: "4.5vw",
+  height: "3.5vw",
 };
 
 const camstyle = {
   position: "absolute",
-  left: "70vw",
+  left: "73vw",
   marginTop: "40vh",
   color: "white",
-  border: "none",
+  // border: "none",
+  width: "4.5vw",
+  height: "3.5vw",
 };
 
 const joinstyle = {
   position: "absolute",
-  left: "65vw",
+  left: "67vw",
   marginTop: "55vh",
   color: "white",
   backgroundColor: "green",
-  width: "6vw",
-  height: "3vw",
-  fontSize: "1.5vw",
-  borderRadius: "1vh",
+  width: "8vw",
+  height: "4vw",
+  fontSize: "2vw",
+  borderRadius: "2vh",
+  border: "none",
+  fontFamily: "sans-serif",
 };
 
 const PreRoom = (props) => {
@@ -119,7 +125,23 @@ const PreRoom = (props) => {
 
   return (
     <div className="bg">
-      <VideoBox ref={userVid} autoPlay playsInline />
+      <div
+        style={{
+          position: "absolute",
+          top: "6vh",
+          left: "16vw",
+          color: "yellow",
+          fontSize: "2vw",
+          fontFamily: "sans-serif",
+          fontStyle: "italic",
+          backgroundColor: "rgba(255,0,255,0.15)",
+          padding: "0.5vw 1.5vw 0.5vw 1.5vw",
+          borderRadius: "1vw",
+        }}
+      >
+        Smile! It increases your face value
+      </div>
+      <VideoBox ref={userVid} autoPlay muted playsInline />
       <input
         ref={nameRef}
         style={name}
