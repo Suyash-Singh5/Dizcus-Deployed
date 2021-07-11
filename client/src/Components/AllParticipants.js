@@ -28,7 +28,7 @@ const AllParticipants = (props) => {
           maxHeight: "75vh",
           overflow: "auto",
           fontSize: "2vh",
-          textAlign: "center",
+          // textAlign: "center",
         }}
       ></div>
     </div>

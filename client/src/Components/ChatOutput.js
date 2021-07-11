@@ -27,11 +27,12 @@ const ChatOutput = (props) => {
     <div ref={props.chatRef} className="chat" style={{ display: "none" }}>
       {/* This div contains Chat Window Logo */}
       <div
+        ref={props.chatTitleRef}
         style={{
           fontSize: "2.5vh",
           textAlign: "center",
-          paddingTop: "0.75vh",
-          paddingBottom: "0.75vh",
+          paddingTop: "0.25vh",
+          paddingBottom: "0.25vh",
           backgroundColor: "rgba(0,0,255,0.3)",
           fontFamily: "sans-serif",
           // fontWeight: "bold",
@@ -54,7 +55,13 @@ const ChatOutput = (props) => {
       {/* This div contains the input writing box along with send button */}
       <div
         ref={props.chatMessageRef}
-        style={{ bottom: "2vh", position: "absolute" }}
+        style={{
+          bottom: "1vw",
+          position: "absolute",
+          backgroundColor: "#1f013ace",
+          borderRadius: "1.4vw",
+          marginLeft: "0.5vw",
+        }}
       >
         <textarea
           rows="1"
@@ -65,32 +72,31 @@ const ChatOutput = (props) => {
           onChange={updateMessage}
           onKeyPress={handleKeypress}
           style={{
-            height: "5vh",
-            width: "100%",
+            height: "3vw",
+            width: "90%",
             paddingLeft: "1vw",
             paddingRight: "1.5vw",
-            paddingTop: "1vh",
+            paddingTop: "0.8vw",
             border: "none",
-            borderRadius: "0.5vw",
-            backgroundColor: "#1f013ace",
+
+            backgroundColor: "rgba(0,0,0,0)",
             color: "white",
             outline: "none",
-            marginLeft: "0.5vw",
 
+            fontSize: "1vw",
             resize: "none",
           }}
         />
-        <button
+        <div
           style={{
-            position: "relative",
-            // bottom: "3vh",
-            // left: "15.5vw",
+            // position: "relative",
             float: "right",
-            // right: "1.5vw",
-            top: "-5vh",
-            backgroundColor: "rgba(0,0,0,0)",
+            // top: "-0.5vw",
+            backgroundColor: "#1f013ace",
             border: "none",
-            width: "1.5vw",
+            width: "1vw",
+            marginTop: "1vw",
+            marginRight: "0.5vw",
           }}
           ref={buttonRef}
           onClick={() => {
@@ -100,7 +106,7 @@ const ChatOutput = (props) => {
           }}
         >
           <img src={sendButton} alt="send" width="100%" height="100%" />
-        </button>
+        </div>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const Footer = (props) => {
         className="Footer-elem"
         style={{ width: "10vw", paddingTop: "1.5vw" }}
       >
-        <img src={Brand} width="75%" />
+        <img src={Brand} width="75%" alt="Brand" />
       </span>
       <span
         className="Footer-elem"

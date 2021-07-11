@@ -26,7 +26,7 @@ const name = {
   border: "2px solid purple",
   borderRadius: "10px",
   textAlign: "center",
-  fontFamily: "times-new-roman",
+  // fontFamily: "times-new-roman",
 };
 
 const micstyle = {
@@ -60,7 +60,7 @@ const joinstyle = {
   fontSize: "2vw",
   borderRadius: "2vh",
   border: "none",
-  fontFamily: "sans-serif",
+  // fontFamily: "sans-serif",
 };
 
 const PreRoom = (props) => {
@@ -72,20 +72,33 @@ const PreRoom = (props) => {
   const [nameValue, setnameValue] = useState(null);
   let camButton = null;
   let micButton = null;
+  const initstates = props.location.state;
+  let chats = null;
+  if (initstates) {
+    if (initstates.chats) {
+      chats = initstates.chats;
+    }
+  }
 
   if (VideoStreaming) {
-    camButton = <img src={CamOn} alt="" width="55%" height="75%" />;
+    camButton = <img src={CamOn} alt="Cam On" width="55%" height="55%" />;
   } else {
-    camButton = <img src={CamOff} alt="" width="55%" height="80%" />;
+    camButton = <img src={CamOff} alt="Cam Off" width="55%" height="50%" />;
   }
   if (AudioStreaming) {
-    micButton = <img src={MicOn} alt="" width="55%" height="75%" />;
+    micButton = <img src={MicOn} alt="Mic On" width="41%" height="65%" />;
   } else {
-    micButton = <img src={MicOff} alt="" width="55%" height="75%" />;
+    micButton = <img src={MicOff} alt="Mic Off" width="50%" height="65%" />;
   }
 
   useEffect(() => {
     dispVideoBox();
+    if (initstates) {
+      if (nameRef.current) {
+        nameRef.current.value = initstates.username;
+        setnameValue(nameRef.current.value);
+      }
+    }
   }, []);
 
   const toggleAudio = () => {
@@ -132,7 +145,7 @@ const PreRoom = (props) => {
           left: "16vw",
           color: "yellow",
           fontSize: "2vw",
-          fontFamily: "sans-serif",
+          // fontFamily: "sans-serif",
           fontStyle: "italic",
           backgroundColor: "rgba(255,0,255,0.15)",
           padding: "0.5vw 1.5vw 0.5vw 1.5vw",
@@ -161,6 +174,7 @@ const PreRoom = (props) => {
             video: VideoStreaming,
             audio: AudioStreaming,
             name: nameValue,
+            chats: chats,
           },
         }}
       >

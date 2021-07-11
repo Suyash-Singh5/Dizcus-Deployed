@@ -1,9 +1,13 @@
 import React from "react";
 import { v1 } from "uuid";
 import NavBar from "../Components/NavBar";
-import bg from "../Images/bg2.jpg";
 import { Fade } from "react-awesome-reveal";
 import tick from "../Images/tick.png";
+import conference from "../Images/conference.png";
+import chat_symbol from "../Images/chat_symbol.png";
+import video_symbol from "../Images/video_symbol.png";
+import rooms_symbol from "../Images/rooms_symbol.png";
+import ss_symbol from "../Images/ss_symbol.png";
 
 export const NewRoom = (props) => {
   const style = {
@@ -20,11 +24,7 @@ export const NewRoom = (props) => {
     border: "0.2vw solid rgb(255,100,0)",
     borderRadius: "2vw",
     backgroundImage: "none",
-    fontFamily: "times-new-roman",
-  };
-
-  const style2 = {
-    backgroundImage: { bg },
+    // fontFamily: "times-new-roman",
   };
 
   function createVideoID() {
@@ -60,7 +60,7 @@ export const NewRoom = (props) => {
           position: "relative",
           fontSize: "3.5vw",
           backgroundColor: "none",
-          fontFamily: "serif",
+          // fontFamily: "serif",
         }}
       >
         <p>Welcome to Dizcus!</p>
@@ -89,16 +89,16 @@ export const NewRoom = (props) => {
           >
             Easy to Use
             <div style={tickStyle}>
-              <img src={tick} width="100%" />
+              <img src={tick} alt="tick" width="100%" />
             </div>
           </div>
           <div
             className="features"
-            style={{ backgroundColor: "rgba(28, 112, 200,0.6)" }}
+            style={{ backgroundColor: "rgba(18, 92, 170,0.6)" }}
           >
             Private
             <div style={tickStyle}>
-              <img src={tick} width="100%" />
+              <img src={tick} alt="tick" width="100%" />
             </div>
           </div>
           <div
@@ -107,7 +107,7 @@ export const NewRoom = (props) => {
           >
             Peer to Peer
             <div style={tickStyle}>
-              <img src={tick} width="100%" />
+              <img src={tick} alt="tick" width="100%" />
             </div>
           </div>
           <div
@@ -116,7 +116,7 @@ export const NewRoom = (props) => {
           >
             Agile
             <div style={tickStyle}>
-              <img src={tick} width="100%" />
+              <img src={tick} alt="tick" width="100%" />
             </div>
           </div>
           <div
@@ -129,7 +129,7 @@ export const NewRoom = (props) => {
           >
             Open Source
             <div style={tickStyle}>
-              <img src={tick} width="100%" />
+              <img src={tick} alt="tick" width="100%" />
             </div>
           </div>
         </div>
@@ -191,24 +191,44 @@ export const NewRoom = (props) => {
             }}
           >
             Video Conference
+            <img
+              style={{ marginRight: "1vw", float: "right" }}
+              src={video_symbol}
+              width="14%"
+            ></img>
           </div>
           <div
             className="features"
-            style={{ backgroundColor: "rgba(28, 112, 200,0.6)" }}
+            style={{ backgroundColor: "rgba(18, 92, 170,0.6)" }}
           >
-            Chat
+            Group Call
+            <img
+              style={{ marginRight: "1vw", float: "right" }}
+              src={conference}
+              width="17%"
+            ></img>
           </div>
           <div
             className="features"
             style={{ backgroundColor: "rgba(2, 47, 142,0.6)" }}
           >
-            Group Call
+            Chat
+            <img
+              style={{ marginRight: "1vw", float: "right" }}
+              src={chat_symbol}
+              width="14%"
+            ></img>
           </div>
           <div
             className="features"
             style={{ backgroundColor: "rgba(3, 12, 84,0.6)" }}
           >
-            Share Large Files
+            Custom Rooms
+            <img
+              style={{ marginRight: "1vw", float: "right" }}
+              src={rooms_symbol}
+              width="14%"
+            ></img>
           </div>
           <div
             className="features"
@@ -219,6 +239,11 @@ export const NewRoom = (props) => {
             }}
           >
             Screen Share
+            <img
+              style={{ marginRight: "1vw", float: "right" }}
+              src={ss_symbol}
+              width="12%"
+            ></img>
           </div>
         </div>
       </Fade>

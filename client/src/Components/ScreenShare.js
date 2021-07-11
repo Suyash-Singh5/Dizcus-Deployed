@@ -1,8 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import ButtonLogo from "../Images/ss2.png";
-import "../Room.css";
-import { Link } from "react-router-dom";
-import "styled-components";
 
 const ScreenShare = (props) => {
   let style = {};

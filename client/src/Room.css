@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
 * {
   overflow-wrap: break-word;
+  font-family: "Ubuntu";
 }
 
 .chatlog {
@@ -10,18 +13,11 @@
 .bg {
   background-color: rgb(0, 0, 0);
   background-image: url("https://i.pinimg.com/originals/d1/de/05/d1de05fd1cb0f0e30cd0024ba7986869.jpg");
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
   background-size: cover;
   position: absolute;
   top: 0px;
   min-height: 100vh;
   min-width: 100vw;
-}
-.App {
-  /* text-align: center; */
-  /* background-color: black; */
-  /* background-image: url("https://i.pinimg.com/originals/d1/de/05/d1de05fd1cb0f0e30cd0024ba7986869.jpg"); */
 }
 
 .newroom {
@@ -44,24 +40,14 @@
   margin-left: 1vw;
 }
 
-/* .App-link {
-  color: #61dafb;
-} */
-
 .about-logo {
   margin-left: 40vw;
   height: 30vh;
-  /* opacity: 50%; */
-}
-
-.nav {
-  /* margin: 0px 20px; */
-  /* height: 15vh; */
 }
 
 .nav-item {
   font-size: 3.5vh;
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
   /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", */
   padding-left: 10vw;
   padding-right: 0vw;
@@ -77,14 +63,10 @@
   background-color: #11ff00;
   opacity: 55%;
   border-radius: 20px;
-  position: absolute;
-  right: 3vw;
   background-image: none;
   color: #060b2d;
   text-decoration: none;
   padding: 6px 10px;
-  /* font-size: 3vh; */
-  /* border: 4px solid red; */
 }
 
 .Vid-elem {
@@ -107,22 +89,22 @@
 .Button {
   clear: both;
   cursor: pointer;
-  /* margin-top: 20px; */
   height: 2.7vw;
-  min-height: 5.4vh;
+  min-height: 4vh;
+  min-height: 25px;
   width: 3.6vw;
-  min-width: 7.2vh;
-  border-radius: 400px;
-  border: 2px solid rgb(255, 255, 0);
+  min-width: 5.33vh;
+  min-width: 34px;
+  border-radius: 2vw;
+  border: 0.15vw solid rgb(255, 255, 0);
   background-color: black;
-  /* position: fixed; */
-  /* bottom: 0px; */
+  text-align: center;
 }
 .Button:hover {
   border: 2px solid rgb(248, 0, 0);
   border-radius: 40px;
-  /* visibility: visible; */
 }
+
 .button-container:hover .buttonText {
   visibility: visible;
   font-size: 0.78vw;
@@ -131,8 +113,6 @@
 .buttonText {
   color: white;
   visibility: hidden;
-  /* position: relative; */
-  /* bottom: 1vh; */
   font-size: 0.78vw;
   margin: 0px;
   text-align: center;
@@ -140,42 +120,25 @@
 
 .Footer {
   background-color: rgba(19, 18, 18, 0.95);
-  /* display: inline-block; */
-  /* color: white; */
   bottom: 0px;
-  /* left: 0px; */
   width: 100vw;
   height: 4.5vw;
   min-height: 9vh;
   position: fixed;
   margin: 0px;
-  /* padding-left: 100px; */
-  /* text-align: center; */
-  /* border: 2px solid green; */
 }
 
 .Footer-elem {
-  /* background-color: rgb(46, 46, 46); */
   float: left;
   padding-left: 2vw;
-  /* position: absolute; */
-  /* bottom: 0px; */
-  /* left: 30vw; */
 }
 
 .CutCall:hover {
   background-color: #ff0000;
-  /* border: 2px solid red; */
   background-image: none;
 }
 
-/* .CutCall {
-  background-color: rgb(194, 3, 3);
-  border: 0px;
-} */
-
 .Present:hover {
-  /* background-color: blue; */
   border: 0.15vw solid blue;
 }
 
@@ -184,15 +147,13 @@
   top: 1vh;
   right: 0.5vw;
   width: 18vw;
-  height: 90vh;
+  height: 45vw;
   background-color: #27014754;
   border-radius: 20px;
-  /* border: 0.1vw solid silver; */
   color: white;
 }
 
 .main__message_container {
-  /* right: 0.5vw; */
   left: 0.5vw;
   bottom: 1vh;
   position: absolute;
@@ -215,7 +176,7 @@
   font-size: 1.5vw;
   padding: 1.4vw 0vw;
   text-align: center;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   /* border-radius: 0.5vw; */
 }
 
@@ -228,13 +189,28 @@
   width: 17vw;
   padding-left: 1vw;
   padding-right: 2vw;
-  /* border: 0.1vw solid silver; */
   border: none;
-  /* border: none; */
   border-radius: 0.5vw;
   background-color: #1f013ace;
   color: white;
   outline: none;
+}
+
+.participantHeading {
+  background-color: rgb(73, 62, 141);
+  font-size: 1.15vw;
+  margin-right: 1vw;
+  margin-bottom: 1vh;
+  border-radius: 0.5vw;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  text-align: center;
+}
+
+.chatText {
+  font-size: 1vw;
+  text-align: left;
+  font-family: "Ubuntu";
 }
 
 @keyframes App-logo-spin {

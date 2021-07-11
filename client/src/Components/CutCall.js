@@ -9,18 +9,16 @@ export const CutCall = (props) => {
     <div>
       <div className="button-container">
         {ButtonText}
-        <Link to="/">
-          <button onClick={props.action} className="Button CutCall">
-            <img
-              className="CutCall"
-              style={{ borderRadius: "100px" }}
-              src={ButtonLogo}
-              alt="Leave Call"
-              width="60%"
-              height="80%"
-            />
-          </button>
-        </Link>
+        <button onClick={props.action} className="Button CutCall">
+          <img
+            className="CutCall"
+            style={{ borderRadius: "100px" }}
+            src={ButtonLogo}
+            alt="Leave Call"
+            width="80%"
+            height="60%"
+          />
+        </button>
       </div>
     </div>
   );
