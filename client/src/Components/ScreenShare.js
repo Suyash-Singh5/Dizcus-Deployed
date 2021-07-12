@@ -14,16 +14,15 @@ const ScreenShare = (props) => {
     <div>
       <div className="button-container">
         {ButtonText}
-        <button onClick={props.action} className="Button Present" style={style}>
+        <div onClick={props.action} className="Button Present" style={style}>
           <img
-            className=""
             src={ButtonLogo}
             alt="Present Screen"
-            style={{ borderRadius: "10px" }}
-            width="70%"
+            style={{ borderRadius: "10px", marginTop: "0.5vw" }}
+            width="60%"
             height="55%"
           ></img>
-        </button>
+        </div>
       </div>
     </div>
   );

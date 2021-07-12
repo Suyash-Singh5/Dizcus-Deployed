@@ -9,16 +9,16 @@ export const CutCall = (props) => {
     <div>
       <div className="button-container">
         {ButtonText}
-        <button onClick={props.action} className="Button CutCall">
+        <div onClick={props.action} className="Button CutCall">
           <img
             className="CutCall"
-            style={{ borderRadius: "100px" }}
+            style={{ borderRadius: "100px", marginTop: "0.5vw" }}
             src={ButtonLogo}
             alt="Leave Call"
-            width="80%"
-            height="60%"
+            width="65%"
+            height="50%"
           />
-        </button>
+        </div>
       </div>
     </div>
   );

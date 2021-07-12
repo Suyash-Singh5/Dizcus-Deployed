@@ -9,7 +9,7 @@ export const WebcamButton = (props) => {
       <img
         src={CamOff}
         alt="Off"
-        width="55%"
+        width="50%"
         height="55%"
         style={{
           marginTop: "0.5vw",
@@ -22,7 +22,7 @@ export const WebcamButton = (props) => {
       <img
         src={CamOn}
         alt="On"
-        width="55%"
+        width="50%"
         height="55%"
         style={{
           marginTop: "0.5vw",

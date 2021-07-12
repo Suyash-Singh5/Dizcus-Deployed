@@ -7,9 +7,14 @@ const EnableChat = (props) => {
     <div>
       <div className="button-container">
         {ButtonText}
-        <button className="Button" onClick={props.action}>
-          <img src={ButtonLogo} width="85%" height="100%"></img>
-        </button>
+        <div className="Button" onClick={props.action}>
+          <img
+            style={{ marginTop: "0.4vw" }}
+            src={ButtonLogo}
+            width="55%"
+            height="70%"
+          ></img>
+        </div>
       </div>
     </div>
   );

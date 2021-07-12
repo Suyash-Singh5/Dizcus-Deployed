@@ -23,28 +23,28 @@ const name = {
   width: "30vw",
   backgroundColor: "rgba(255,0,255,0.3)",
   color: "white",
-  border: "2px solid purple",
+  border: "0.2vw solid purple",
   borderRadius: "10px",
   textAlign: "center",
   // fontFamily: "times-new-roman",
 };
 
 const micstyle = {
+  display: "inline-block",
   position: "absolute",
   left: "63vw",
   marginTop: "40vh",
   color: "white",
-  // border: "none",
   width: "4.5vw",
   height: "3.5vw",
 };
 
 const camstyle = {
+  display: "inline-block",
   position: "absolute",
   left: "73vw",
   marginTop: "40vh",
   color: "white",
-  // border: "none",
   width: "4.5vw",
   height: "3.5vw",
 };
@@ -81,14 +81,46 @@ const PreRoom = (props) => {
   }
 
   if (VideoStreaming) {
-    camButton = <img src={CamOn} alt="Cam On" width="55%" height="55%" />;
+    camButton = (
+      <img
+        style={{ marginTop: "0.6vw" }}
+        src={CamOn}
+        alt="Cam On"
+        width="55%"
+        height="55%"
+      />
+    );
   } else {
-    camButton = <img src={CamOff} alt="Cam Off" width="55%" height="50%" />;
+    camButton = (
+      <img
+        style={{ marginTop: "0.6vw" }}
+        src={CamOff}
+        alt="Cam Off"
+        width="55%"
+        height="55%"
+      />
+    );
   }
   if (AudioStreaming) {
-    micButton = <img src={MicOn} alt="Mic On" width="41%" height="65%" />;
+    micButton = (
+      <img
+        style={{ marginTop: "0.5vw" }}
+        src={MicOn}
+        alt="Mic On"
+        width="35%"
+        height="65%"
+      />
+    );
   } else {
-    micButton = <img src={MicOff} alt="Mic Off" width="50%" height="65%" />;
+    micButton = (
+      <img
+        style={{ marginTop: "0.5vw" }}
+        src={MicOff}
+        alt="Mic Off"
+        width="45%"
+        height="65%"
+      />
+    );
   }
 
   useEffect(() => {
@@ -161,12 +193,12 @@ const PreRoom = (props) => {
         placeholder="Enter your Name..."
         onChange={handleName}
       ></input>
-      <button style={micstyle} onClick={toggleAudio} className="Button">
+      <div style={micstyle} onClick={toggleAudio} className="Button">
         {micButton}
-      </button>
-      <button style={camstyle} onClick={toggleVideo} className="Button">
+      </div>
+      <div style={camstyle} onClick={toggleVideo} className="Button">
         {camButton}
-      </button>
+      </div>
       <Link
         to={{
           pathname: `${match.url}/join`,

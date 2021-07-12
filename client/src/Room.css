@@ -90,11 +90,11 @@
   clear: both;
   cursor: pointer;
   height: 2.7vw;
-  min-height: 4vh;
-  min-height: 25px;
+  /* min-height: 4vh; */
+  min-height: 22px;
   width: 3.6vw;
-  min-width: 5.33vh;
-  min-width: 34px;
+  /* min-width: 5.33vh; */
+  min-width: 29px;
   border-radius: 2vw;
   border: 0.15vw solid rgb(255, 255, 0);
   background-color: black;
