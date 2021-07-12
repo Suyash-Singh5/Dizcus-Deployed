@@ -55,13 +55,11 @@
 
 .contact:hover {
   color: #060b2d;
-  background-color: #11ff00;
-  opacity: 65%;
+  background-color: #11ff00c7;
 }
 
 .contact {
-  background-color: #11ff00;
-  opacity: 55%;
+  background-color: #11ff0098;
   border-radius: 20px;
   background-image: none;
   color: #060b2d;
