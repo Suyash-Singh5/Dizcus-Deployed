@@ -20,17 +20,13 @@ const ChatRoom = (props) => {
   let username = null;
 
   const name = {
-    // position: "absolute",
     fontSize: "2.2vw",
-    // top: "25vh",
-    // left: "55vw",
     width: "30vw",
     backgroundColor: "rgba(255,0,255,0.3)",
     color: "white",
     border: "2px solid purple",
     borderRadius: "10px",
     textAlign: "center",
-    // fontFamily: "times-new-roman",
   };
 
   if (chatRef.current) {
@@ -62,25 +58,31 @@ const ChatRoom = (props) => {
   }, []);
 
   const handleJoin = () => {
-    if (chatRef.current) {
-      chatRef.current.style.display = "block";
-      chatRef.current.style.width = "80vw";
-      chatRef.current.style.height = "95vh";
-      chatRef.current.style.backgroundColor = "rgba(50,0,50,0.8)";
-      chatRef.current.style.marginRight = "10vw";
-      chatMessageRef.current.style.width = "55vw";
-      chatMessageRef.current.style.fonstSize = "1.2vw";
-      chatMessageRef.current.style.marginLeft = "5vw";
-      chatsLogRef.current.style.marginLeft = "5vw";
-      chatsLogRef.current.style.marginRight = "3vw";
-      chatsLogRef.current.style.fontSize = "1vw";
-      chatTitleRef.current.style.fontSize = "2vw";
-      // chatTitleRef.current.style.fontFamily = "times-new-roman";
+    if (nameInpRef.current.value) {
+      if (chatRef.current) {
+        chatRef.current.style.display = "block";
+        chatRef.current.style.width = "80vw";
+        chatRef.current.style.height = "95vh";
+        chatRef.current.style.backgroundColor = "rgba(50,0,50,0.8)";
+        chatRef.current.style.marginRight = "10vw";
+        chatMessageRef.current.style.width = "55vw";
+        chatMessageRef.current.style.fonstSize = "1.2vw";
+        chatMessageRef.current.style.marginLeft = "5vw";
+        chatsLogRef.current.style.marginLeft = "5vw";
+        chatsLogRef.current.style.marginRight = "3vw";
+        chatsLogRef.current.style.fontSize = "1vw";
+        chatTitleRef.current.style.fontSize = "2vw";
+        if (initstates) {
+          if (initstates.title) {
+            chatTitleRef.current.innerText = initstates.title;
+          }
+        }
+      }
+      username = nameInpRef.current.value;
+      nameRef.current.style.display = "none";
+      chatBlockRef.current.style.display = "block";
+      socketRef.current.emit("join room", roomID, username, true);
     }
-    username = nameInpRef.current.value;
-    nameRef.current.style.display = "none";
-    chatBlockRef.current.style.display = "block";
-    socketRef.current.emit("join room", roomID, username, true);
   };
 
   const handleSendMessage = (message) => {
@@ -126,7 +128,7 @@ const ChatRoom = (props) => {
           style={name}
           placeholder="Enter your name"
         ></input>
-        <button
+        <div
           style={{
             fontSize: "2vw",
             width: "6vw",
@@ -135,12 +137,14 @@ const ChatRoom = (props) => {
             borderRadius: "0.5vw",
             marginLeft: "2vw",
             // fontFamily: "times-new-roman",
+            display: "inline-block",
+            cursor: "pointer",
           }}
           onClick={handleJoin}
           ref={joinRef}
         >
           Join
-        </button>
+        </div>
       </div>
       <div ref={chatBlockRef} style={{ display: "none" }}>
         <div style={{}}>

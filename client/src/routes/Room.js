@@ -8,11 +8,12 @@ import "../Room.css";
 import AddParticipantPanel from "../Components/AddParticipantPanel";
 import AllParticipants from "../Components/AllParticipants";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import pin from "../Images/pin.png";
 
 // Styled Video Component for every video window
 
 const VideoBox = styled.video`
-  border: 1px solid blue;
+  // border: 1px solid blue;
   border-radius: 10px;
 `;
 
@@ -28,12 +29,39 @@ const VideoPeer = (props) => {
   }, []);
 
   return (
-    <VideoBox
-      style={{ height: `${props.height}vw`, width: `${props.width}vw` }}
-      playsInline
-      autoPlay
-      ref={ref}
-    />
+    <>
+      <VideoBox
+        style={{ height: `${props.height}vw`, width: `${props.width}vw` }}
+        playsInline
+        autoPlay
+        ref={ref}
+        className="videobox"
+      />
+
+      <div
+        onClick={() => {
+          if (ref.current) {
+            ref.current.requestFullscreen();
+          }
+        }}
+        style={{
+          width: "1.2vw",
+        }}
+        className="pin"
+      >
+        <img
+          style={{
+            position: "relative",
+            top: `-${props.height / 2}vw`,
+            left: `-${props.width / 2}vw`,
+            opacity: "40%",
+          }}
+          src={pin}
+          width="100%"
+          alt="Pin"
+        />
+      </div>
+    </>
   );
 };
 
@@ -273,6 +301,7 @@ const Room = (props) => {
       props.history.push(`/${props.match.params.roomID}/chat`, {
         username: username,
         chats: chatsLogRef.current ? chatsLogRef.current.innerHTML : null,
+        title: "Post-Call Chat",
       });
       await socketRef.current.emit("cut call");
       removeUser();
@@ -552,7 +581,31 @@ const Room = (props) => {
             autoPlay
             playsInline
             muted
+            className="videobox"
           />
+          <div
+            onClick={() => {
+              if (userVideo.current) {
+                userVideo.current.requestFullscreen();
+              }
+            }}
+            style={{
+              width: "1.2vw",
+            }}
+            className="pin"
+          >
+            <img
+              style={{
+                position: "relative",
+                top: `-${videoparams(count).userheight / 2}vw`,
+                left: `-${videoparams(count).userwidth / 2}vw`,
+                opacity: "40%",
+              }}
+              src={pin}
+              width="100%"
+              alt="Pin"
+            />
+          </div>
         </div>
         <ChatOutput
           chatRef={chatRef}

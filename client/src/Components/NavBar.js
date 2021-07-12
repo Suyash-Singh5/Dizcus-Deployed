@@ -44,6 +44,17 @@ const NavBar = () => {
               </li>
               <li className="nav-item">
                 <Link
+                  to="/joinMeeting"
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(244,183,40,1)",
+                  }}
+                >
+                  <div>Join Meeting</div>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   to="/about"
                   style={{
                     textDecoration: "none",
@@ -55,21 +66,9 @@ const NavBar = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/"
+                  to="/contactUs"
                   style={{
                     textDecoration: "none",
-                    color: "rgba(244,183,40,1)",
-                  }}
-                >
-                  <div>Join Meeting</div>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/"
-                  style={{
-                    textDecoration: "none",
-                    color: "rgba(255,255,0,0.8)",
                   }}
                 >
                   <div className="contact">Contact Us</div>

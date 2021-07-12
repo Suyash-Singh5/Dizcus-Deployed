@@ -46,7 +46,7 @@
 }
 
 .nav-item {
-  font-size: 3.5vh;
+  font-size: 1.75vw;
   /* font-family: "Times New Roman", Times, serif; */
   /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", */
   padding-left: 10vw;
@@ -54,17 +54,12 @@
 }
 
 .contact:hover {
-  color: #060b2d;
-  background-color: #11ff00c7;
+  color: rgba(248, 183, 40, 1);
 }
 
 .contact {
-  background-color: #11ff0098;
-  border-radius: 20px;
-  background-image: none;
-  color: #060b2d;
+  color: rgba(248, 183, 40, 0.8);
   text-decoration: none;
-  padding: 6px 10px;
 }
 
 .Vid-elem {
@@ -209,6 +204,26 @@
   font-size: 1vw;
   text-align: left;
   font-family: "Ubuntu";
+}
+
+.optionButton {
+  background-color: rgba(0, 255, 255, 0.2);
+  color: rgb(200, 200, 200);
+  cursor: pointer;
+  background-image: "none";
+}
+
+.videobox:hover + .pin {
+  display: inline-block;
+}
+
+.pin:hover {
+  display: inline-block;
+}
+
+.pin {
+  display: none;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
