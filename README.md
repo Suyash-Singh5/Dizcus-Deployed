@@ -10,18 +10,18 @@ The Code is divided to two parts:
 
 1. Front end Code:
    This includes the client folder which is a react app that has these folders inside the src folder:
-   a) routes folder:
-   This folder contains files with each corresponding to a particular page in the website
-   b) Component folder:
-   This folder contains files with each corresponding to a reusable component in the application like the buttons, navigation bar, etc.
-   c) Images folder:
-   This folder contains almost all the images used in this application
 
-Other files include:
-a) App.js:
-This file is a wrapper of all the front end files
-b) Room.css:
-This file contains all the css code used in styling apart from the inline css
+   - routes folder:
+     This folder contains files with each corresponding to a particular page in the website
+   - Component folder:
+     This folder contains files with each corresponding to a reusable component in the application like the buttons, navigation bar, etc.
+   - Images folder:
+     This folder contains almost all the images used in this application
+   - Other files include:
+     - App.js:
+       This file is a wrapper of all the front end files
+     - Room.css:
+       This file contains all the css code used in styling apart from the inline css
 
 2. Back end Code:
    The complete back end code is only in a single file - server.js.
