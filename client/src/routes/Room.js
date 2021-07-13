@@ -13,7 +13,7 @@ import pin from "../Images/pin.png";
 // Styled Video Component for every video window
 
 const VideoBox = styled.video`
-  // border: 1px solid blue;
+  border: 1px solid blue;
   border-radius: 10px;
 `;
 
@@ -114,7 +114,7 @@ const Room = (props) => {
   useEffect(() => {
     socketRef.current = io.connect("/");
     if (chatsLogRef.current && initstates) {
-      if (initstates.chat) {
+      if (initstates.chats) {
         chatsLogRef.current.innerHTML = initstates.chats;
       }
     }

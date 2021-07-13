@@ -6,18 +6,18 @@ import CutCall from "../Components/CutCall";
 import vidcall from "../Images/vidcall.png";
 
 const ChatRoom = (props) => {
-  const chatRef = useRef();
-  const chatsLogRef = useRef();
-  const chatMessageRef = useRef();
-  const socketRef = useRef();
-  const nameRef = useRef();
-  const joinRef = useRef();
-  const nameInpRef = useRef();
-  const chatBlockRef = useRef();
-  const chatTitleRef = useRef();
-  const roomID = props.match.params.roomID;
-  const initstates = props.location.state;
-  let username = null;
+  const chatRef = useRef(); // Refers to complete chat window
+  const chatsLogRef = useRef(); // Refers to chat logs (where chats are stored)
+  const chatMessageRef = useRef(); // Refers to text area(where messages are typed) and send button
+  const socketRef = useRef(); // Refers to client side socket object
+  const nameRef = useRef(); // Refers to complete div which appears before chat window
+  const joinRef = useRef(); // Refers to Join Chat Room button
+  const nameInpRef = useRef(); // Refers to Input where Name is entered
+  const chatBlockRef = useRef(); // Refers to complete Chat window along with buttons
+  const chatTitleRef = useRef(); // Refers to Title div of the Chat Window
+  const roomID = props.match.params.roomID; // Room ID
+  const initstates = props.location.state; // States like username, chat logs and Chat Title stored here
+  let username = null; // Stores name of the user
 
   const name = {
     fontSize: "2.2vw",
