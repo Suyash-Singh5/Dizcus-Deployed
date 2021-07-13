@@ -6,14 +6,17 @@ import MicOn from "../Images/MicOn.png";
 import MicOff from "../Images/MicOff.png";
 import { Link, useRouteMatch } from "react-router-dom";
 
+// Styled Video Box Component
+
 const VideoBox = styled.video`
-  // height: 45vh;
   width: 35vw;
   border: 1px solid blue;
   border-radius: 10px;
   margin-left: 15vw;
   margin-top: 20vh;
 `;
+
+// Enter name input field styling
 
 const name = {
   position: "absolute",
@@ -26,8 +29,9 @@ const name = {
   border: "0.2vw solid purple",
   borderRadius: "10px",
   textAlign: "center",
-  // fontFamily: "times-new-roman",
 };
+
+// Mic button styling
 
 const micstyle = {
   display: "inline-block",
@@ -39,6 +43,8 @@ const micstyle = {
   height: "3.5vw",
 };
 
+// Camera button styling
+
 const camstyle = {
   display: "inline-block",
   position: "absolute",
@@ -48,6 +54,8 @@ const camstyle = {
   width: "4.5vw",
   height: "3.5vw",
 };
+
+// Join button styling
 
 const joinstyle = {
   position: "absolute",
@@ -60,25 +68,32 @@ const joinstyle = {
   fontSize: "2vw",
   borderRadius: "2vh",
   border: "none",
-  // fontFamily: "sans-serif",
 };
 
+/* Main functional component which is responsible for the page which appears before joining 
+   It takes state variable like username and chat logs if passed from the chat room */
+
 const PreRoom = (props) => {
+  // Initializing Variables
+
   let match = useRouteMatch();
-  const userVid = useRef();
-  const nameRef = useRef();
-  const [VideoStreaming, setVideoStreaming] = useState(true);
-  const [AudioStreaming, setAudioStreaming] = useState(true);
-  const [nameValue, setnameValue] = useState(null);
-  let camButton = null;
-  let micButton = null;
-  const initstates = props.location.state;
-  let chats = null;
+  const userVid = useRef(); // Refers to Video Box element
+  const nameRef = useRef(); // Refers to Input element which stores the username
+  const [VideoStreaming, setVideoStreaming] = useState(true); // Stores state of Video button (on/off)
+  const [AudioStreaming, setAudioStreaming] = useState(true); // Stores state of Audio button (on/off)
+  const [nameValue, setnameValue] = useState(null); // Stores the username
+  let camButton = null; // Stores image element of the camera button
+  let micButton = null; // Stores image element of the mic button
+  const initstates = props.location.state; // Stores the states which are passed as input
+  let chats = null; // Stores chat logs in HTML format
+
   if (initstates) {
     if (initstates.chats) {
       chats = initstates.chats;
     }
   }
+
+  // Assigning Image to camera button based on the camera state
 
   if (VideoStreaming) {
     camButton = (
@@ -101,6 +116,9 @@ const PreRoom = (props) => {
       />
     );
   }
+
+  // Assigning Image to mic button based on the camera state
+
   if (AudioStreaming) {
     micButton = (
       <img
@@ -123,6 +141,8 @@ const PreRoom = (props) => {
     );
   }
 
+  // Fires when user joins the page
+
   useEffect(() => {
     dispVideoBox();
     if (initstates) {
@@ -133,11 +153,15 @@ const PreRoom = (props) => {
     }
   }, []);
 
+  // Handles event of user clicking on Mic button
+
   const toggleAudio = () => {
     userVid.current.srcObject.getAudioTracks()[0].enabled =
       !userVid.current.srcObject.getAudioTracks()[0].enabled;
     setAudioStreaming(!AudioStreaming);
   };
+
+  // Handles event of user clicking on Camera button
 
   const toggleVideo = () => {
     userVid.current.srcObject.getVideoTracks()[0].enabled =
@@ -145,7 +169,10 @@ const PreRoom = (props) => {
     setVideoStreaming(!VideoStreaming);
   };
 
+  // Displays user Video
+
   const dispVideoBox = () => {
+    // Requesting User Media access
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
@@ -154,6 +181,8 @@ const PreRoom = (props) => {
         userVid.current.srcObject.getAudioTracks()[0].enabled = AudioStreaming;
       });
   };
+
+  // Fires when user clicks on join button and stops the media acess for this page
 
   const handleJoin = () => {
     if (userVid.current.srcObject) {
@@ -164,9 +193,13 @@ const PreRoom = (props) => {
     }
   };
 
+  // Updates name state
+
   const handleName = () => {
     setnameValue(nameRef.current.value);
   };
+
+  // Returns all the elements in the roomID/video page
 
   return (
     <div className="bg">
@@ -177,7 +210,6 @@ const PreRoom = (props) => {
           left: "16vw",
           color: "yellow",
           fontSize: "2vw",
-          // fontFamily: "sans-serif",
           fontStyle: "italic",
           backgroundColor: "rgba(255,0,255,0.15)",
           padding: "0.5vw 1.5vw 0.5vw 1.5vw",

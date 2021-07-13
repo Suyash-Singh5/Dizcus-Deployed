@@ -3,11 +3,49 @@ import NavBar from "../Components/NavBar";
 import { Fade } from "react-awesome-reveal";
 import { v1 } from "uuid";
 
+/* Main Functional element which renders on /joinMeeting page
+   It only takes the props as input to push room ID to its history object */
+
 const JoinMeeting = (props) => {
-  const [ChatJoin, setChatJoin] = useState(true);
-  const [ChatCreate, setChatCreate] = useState(true);
-  const createInpRef = useRef();
-  const joinInpRef = useRef();
+  // Initializing variables
+
+  const [ChatJoin, setChatJoin] = useState(true); // State in which True refers to Chat selected and false to Video in join section
+  const [ChatCreate, setChatCreate] = useState(true); // State in which True refers to Chat selected and false to Video in create section
+  const createInpRef = useRef(); // Refers to create meeting input box element
+  const joinInpRef = useRef(); // Refers to join meeting input box element
+  let chatjoin = null; // Stores border styling of chat option in join section
+  let chatcreate = null; // Stores border styling of chat option in create section
+  let vidjoin = null; // Stores border styling of video option in join section
+  let vidcreate = null; // Stores border styling of video option in create section
+
+  // Assigning the above variables their values
+
+  if (ChatJoin) {
+    chatjoin = {
+      border: "0.2vw solid rgb(0,255,255)",
+    };
+    vidjoin = null;
+  } else {
+    vidjoin = {
+      border: "0.2vw solid rgb(0,255,255)",
+    };
+    chatjoin = null;
+  }
+
+  if (ChatCreate) {
+    chatcreate = {
+      border: "0.2vw solid rgb(0,255,255)",
+    };
+    vidcreate = null;
+  } else {
+    vidcreate = {
+      border: "0.2vw solid rgb(0,255,255)",
+    };
+    chatcreate = null;
+  }
+
+  // Room ID input box styling
+
   const name = {
     display: "inline-block",
     fontSize: "1.5vw",
@@ -20,66 +58,39 @@ const JoinMeeting = (props) => {
     textAlign: "center",
     marginTop: "7vw",
   };
-  let chatjoin = null;
-  let chatcreate = null;
-  let vidjoin = null;
-  let vidcreate = null;
-  if (ChatJoin) {
-    chatjoin = {
-      //   backgroundColor: "rgba(0, 255, 255, 0.6)",
-      //   color: "rgb(50,50,50",
-      border: "0.2vw solid rgb(0,255,255)",
-    };
-    vidjoin = null;
-  } else {
-    vidjoin = {
-      //   backgroundColor: "rgba(0, 255, 255, 0.6)",
-      //   color: "rgb(50,50,50",
-      border: "0.2vw solid rgb(0,255,255)",
-    };
-    chatjoin = null;
-  }
 
-  if (ChatCreate) {
-    chatcreate = {
-      //   backgroundColor: "rgba(0, 255, 255, 0.6)",
-      //   color: "rgb(50,50,50",
-      border: "0.2vw solid rgb(0,255,255)",
-    };
-    vidcreate = null;
-  } else {
-    vidcreate = {
-      //   backgroundColor: "rgba(0, 255, 255, 0.6)",
-      //   color: "rgb(50,50,50",
-      border: "0.2vw solid rgb(0,255,255)",
-    };
-    chatcreate = null;
-  }
+  // Chat option in join section styling
 
   const chatjoinbutton = {
     ...chatjoin,
     display: "inline-block",
     width: "10vw",
     padding: "1vw",
-    // border: "0.2vw solid rgb(0,255,255)",
     borderRadius: "0.5vw",
   };
+
+  // Video option in join section styling
+
   const vidjoinbutton = {
     ...vidjoin,
     display: "inline-block",
     width: "10vw",
     padding: "1vw",
-    // border: "0.2vw solid rgb(0,255,255)",
     borderRadius: "0.5vw",
   };
+
+  // Chat option in create section styling
+
   const chatcreatebutton = {
     ...chatcreate,
     display: "inline-block",
     width: "10vw",
     padding: "1vw",
-    // border: "0.2vw solid rgb(0,255,255)",
     borderRadius: "0.5vw",
   };
+
+  // Video option in create section styling
+
   const vidcreatebutton = {
     ...vidcreate,
     display: "inline-block",
@@ -87,6 +98,9 @@ const JoinMeeting = (props) => {
     padding: "1vw",
     borderRadius: "0.5vw",
   };
+
+  /* Below functions handle the state update after join button is pressed
+   based on the option selected */
 
   const toggleChatJoin = () => {
     setChatJoin(true);
@@ -101,6 +115,8 @@ const JoinMeeting = (props) => {
     setChatCreate(false);
   };
 
+  // This function handles the actions when the join button in the join section is pressed
+
   const handleJoinJoin = () => {
     if (ChatJoin) {
       if (!joinInpRef.current.value) {
@@ -114,6 +130,8 @@ const JoinMeeting = (props) => {
       }
     }
   };
+
+  // This function handles the actions when the join button in the create section is pressed
 
   const handleCreateJoin = () => {
     if (ChatCreate) {
@@ -132,6 +150,9 @@ const JoinMeeting = (props) => {
       }
     }
   };
+
+  // Returns the elements in the joinMeeting page
+
   return (
     <div
       className="newroom"
@@ -196,7 +217,6 @@ const JoinMeeting = (props) => {
                 color: "wheat",
               }}
               onClick={handleJoinJoin}
-              // ref={joinRef}
             >
               Join
             </div>
@@ -260,7 +280,6 @@ const JoinMeeting = (props) => {
                 color: "wheat",
               }}
               onClick={handleCreateJoin}
-              //   ref={joinRef}
             >
               Join
             </div>

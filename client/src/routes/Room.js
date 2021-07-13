@@ -204,8 +204,8 @@ const Room = (props) => {
     });
 
     socketRef.current.on("receiving returned signal", (payload) => {
-      const item = peersRef.current.find((p) => p.peerID === payload.id);
-      item.peer.signal(payload.signal);
+      const elem = peersRef.current.find((p) => p.peerID === payload.id);
+      elem.peer.signal(payload.signal);
     });
   };
 

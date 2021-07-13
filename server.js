@@ -7,22 +7,31 @@ const server = http.createServer(app);
 const socket = require("socket.io");
 const io = socket(server);
 
-let videoNamesDict = {}
-let chatNamesDict = {}
+let videoNamesDict = {} // Dictionary stores all the socketid, usernames pairs in the video room
+let chatNamesDict = {} // Dictionary stores all the socketid, usernames pairs in the chat room
+const videoRooms = {}; // Dictionary stores all the room IDs and array socket ids in the video room pairs
+const chatRooms = {}; // Dictionary stores all the room IDs and array socket ids in the chat room pairs
+const socketdict = {}; // Dictionary stores all the socketid and room ID pairs 
 
-const videoRooms = {};
-
-const chatRooms = {};
-
-const socketdict = {};
+// Checks if a Dictionary is empty
 
 const isEmpty = (dic) =>{
-    for(var i in dic){ return false;}
+    for(var i in dic)
+    { 
+        return false;
+    }
    return true;
 }
 
+// Fires when a socket is connected to the server
+
 io.on('connection', socket => {
+    
+    // Adds socket to the room as well as to the disctionaries
+    
     socket.on("join room", (roomID,username,chat) => {
+        
+        // Adding to a video room
         if(!chat)
         {
             if (videoRooms[roomID]) 
@@ -47,7 +56,10 @@ io.on('connection', socket => {
             const usersInThisRoom = videoRooms[roomID].filter(id => id !== socket.id);
             videoNamesDict[roomID][socket.id] = username;
             socket.emit("all users", usersInThisRoom);
-        }else 
+        }
+        
+        // Adding to a chat room
+        else 
         {
             if (chatRooms[roomID]) 
             {
@@ -66,6 +78,8 @@ io.on('connection', socket => {
         
     });
 
+    // Emits a boolean value which is true if there are no duplicates
+
     socket.on("current users", (newuser,roomID)=> {
         let add = true;
         if(videoRooms[roomID])
@@ -79,19 +93,26 @@ io.on('connection', socket => {
         socket.emit('add user',add);
     })
 
+    // Sends signal to other peers about new user
 
     socket.on("sending signal", payload => {
         io.to(payload.userToSignal).emit('user joined', { signal: payload.signal, callerID: payload.callerID });
     });
 
+    // Returns the signal to the new user
+
     socket.on("returning signal", payload => {
         io.to(payload.callerID).emit('receiving returned signal', { signal: payload.signal, id: socket.id });
     });
 
+    // Fires when the user clicks on leave call button in video room or join video button or leave call button in chat room
+
     socket.on("cut call",()=> {
         const roomID = socketdict[socket.id];
         let room = null;
-        let disconchat = false;
+        let disconchat = false; // True if user should be disconnected from chat room
+        
+        // Checking user in video room 
         if (!isEmpty(videoRooms[roomID])) 
         {
             videoRooms[roomID].forEach(user=>{
@@ -102,6 +123,8 @@ io.on('connection', socket => {
             })
             
         }
+
+        // Checking user in chat room
         if (!isEmpty(chatRooms[roomID]))
         {
             chatRooms[roomID].forEach(user=>{
@@ -113,6 +136,7 @@ io.on('connection', socket => {
             })
         }
 
+        // Removing the socket from all the disctionaries in video room nested if are just to prevent errors
         if(!disconchat)
         {
             if (!isEmpty(videoNamesDict)) 
@@ -138,6 +162,8 @@ io.on('connection', socket => {
                 }
             }
         }
+
+        // Removing the socket from all the disctionaries in chat room
         else 
         {
             if (!isEmpty(chatNamesDict)) 
@@ -165,6 +191,8 @@ io.on('connection', socket => {
         socket.broadcast.emit('user left',socket.id);
     });
 
+    // Emits all the users in the room (both video and chat)
+
     socket.on("display users", ()=> {
         const roomID = socketdict[socket.id];
         let vidnames = []
@@ -179,6 +207,8 @@ io.on('connection', socket => {
         }
         socket.emit('all names',vidnames,chatnames)
     })
+
+    // Emits the name of which a particular socketid is linked to
 
     socket.on("get name", (id)=> {
         const roomID = socketdict[id]
@@ -196,9 +226,13 @@ io.on('connection', socket => {
         socket.emit('fetch name',name)
     })
 
+    // Sends the chat message to all the users in the room along with the name of the person 
+
     socket.on("send message",(message)=>{
         const roomID = socketdict[socket.id];
-        let name = null;
+        let name = null; // name of person who sent the message
+        
+        // Checking in Video Room
         if(videoNamesDict[roomID])
         {
             if (videoNamesDict[roomID][socket.id]) 
@@ -206,6 +240,8 @@ io.on('connection', socket => {
                 name = videoNamesDict[roomID][socket.id];
             }
         }
+
+        // Checking in Chat Room
         if(chatNamesDict[roomID])
         {
             if (chatNamesDict[roomID][socket.id]) 
@@ -213,6 +249,8 @@ io.on('connection', socket => {
                 name = chatNamesDict[roomID][socket.id];
             }
         }
+
+        // Emitting message to all participants in the video room
         if(videoRooms[roomID])
         {
             videoRooms[roomID].forEach( participant => {
@@ -222,6 +260,8 @@ io.on('connection', socket => {
                 }
             });
         }
+
+        // Emitting message to all participants in the chat room
         if (chatRooms[roomID]) 
         {
             chatRooms[roomID].forEach( participant => {
@@ -233,6 +273,7 @@ io.on('connection', socket => {
         }
     })
 
+    // Same as the cut call with the difference that this fires when the user is disconnected
     socket.on('disconnect', () => {
         const roomID = socketdict[socket.id];
         let room = null;
@@ -312,6 +353,7 @@ io.on('connection', socket => {
 
 });
 
+// Checking if in production environment
 if(process.env.PROD){
     app.use(express.static(path.join(__dirname,"./client/build")));
     app.get('*',(req,res)=>{

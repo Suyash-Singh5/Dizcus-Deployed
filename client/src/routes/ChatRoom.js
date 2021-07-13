@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import CutCall from "../Components/CutCall";
 import vidcall from "../Images/vidcall.png";
 
+/* Main functional element which renders the chat room 
+It takes props as an input which contains the initial states like userame */
+
 const ChatRoom = (props) => {
   const chatRef = useRef(); // Refers to complete chat window
   const chatsLogRef = useRef(); // Refers to chat logs (where chats are stored)
@@ -18,6 +21,8 @@ const ChatRoom = (props) => {
   const roomID = props.match.params.roomID; // Room ID
   const initstates = props.location.state; // States like username, chat logs and Chat Title stored here
   let username = null; // Stores name of the user
+
+  // Styles the Input name element
 
   const name = {
     fontSize: "2.2vw",
@@ -35,8 +40,12 @@ const ChatRoom = (props) => {
     chatRef.current.style.textAlign = "center";
   }
 
+  // Connects to client side socket and also recieve chat message
+
   useEffect(() => {
     socketRef.current = io.connect("/");
+
+    // Checks if redirected from the video room
     if (initstates) {
       if (nameInpRef.current) {
         nameInpRef.current.value = initstates.username;
@@ -47,6 +56,7 @@ const ChatRoom = (props) => {
       }
     }
 
+    // If message is recieved adds to chat Log
     socketRef.current.on("recieve message", (message) => {
       if (chatsLogRef.current) {
         chatsLogRef.current.innerHTML += `
@@ -56,6 +66,10 @@ const ChatRoom = (props) => {
       }
     });
   }, []);
+
+  /* This function handles actions to be taken when user clicks on join button
+     Mainly this function diplays the chat window using the chat oputput component
+     and modifying it accordingly by using useRef */
 
   const handleJoin = () => {
     if (nameInpRef.current.value) {
@@ -85,6 +99,9 @@ const ChatRoom = (props) => {
     }
   };
 
+  /* This function sends chat message to all users when send button is clicked
+  It also updates the innrHTML of the user who sent the message */
+
   const handleSendMessage = (message) => {
     if (message) {
       socketRef.current.emit("send message", message);
@@ -97,9 +114,14 @@ const ChatRoom = (props) => {
     }
   };
 
+  // Disconnects user from the room
+
   const leaveChat = () => {
     socketRef.current.emit("cut call");
   };
+
+  /* This function handles the actions taken when the user clicks on join video call button
+  The user is disconnected from the room and then reconnected in the video room */
 
   const handleJoinVideo = () => {
     socketRef.current.emit("cut call");
@@ -109,6 +131,8 @@ const ChatRoom = (props) => {
     });
   };
 
+  // Returns all the elements in the chat room
+
   return (
     <div className="bg">
       <div ref={nameRef} style={{ textAlign: "center" }}>
@@ -116,7 +140,6 @@ const ChatRoom = (props) => {
           style={{
             fontSize: "4vw",
             color: "yellow",
-            // fontFamily: "Ubuntu",
             marginTop: "5vw",
             marginBottom: "10vw",
           }}
@@ -136,7 +159,6 @@ const ChatRoom = (props) => {
             border: "none",
             borderRadius: "0.5vw",
             marginLeft: "2vw",
-            // fontFamily: "times-new-roman",
             display: "inline-block",
             cursor: "pointer",
           }}

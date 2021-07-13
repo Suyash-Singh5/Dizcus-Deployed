@@ -47,8 +47,6 @@
 
 .nav-item {
   font-size: 1.75vw;
-  /* font-family: "Times New Roman", Times, serif; */
-  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", */
   padding-left: 10vw;
   padding-right: 0vw;
 }
@@ -76,17 +74,14 @@
   margin-left: 120px;
   margin-right: 120px;
   display: inline-block;
-  /* background-color: black; */
 }
 
 .Button {
   clear: both;
   cursor: pointer;
   height: 2.7vw;
-  /* min-height: 4vh; */
   min-height: 22px;
   width: 3.6vw;
-  /* min-width: 5.33vh; */
   min-width: 29px;
   border-radius: 2vw;
   border: 0.15vw solid rgb(255, 255, 0);
@@ -169,8 +164,6 @@
   font-size: 1.5vw;
   padding: 1.4vw 0vw;
   text-align: center;
-  /* font-family: sans-serif; */
-  /* border-radius: 0.5vw; */
 }
 
 .createButton:hover {
